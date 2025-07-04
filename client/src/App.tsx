@@ -20,10 +20,15 @@ function App() {
   // Reset view state when user authentication status changes
   useEffect(() => {
     if (!isAuthenticated) {
+      // User logged out - reset to login page state
+      setCurrentView('dashboard');
+      setCurrentReportId(null);
+    } else if (isAuthenticated && user) {
+      // User logged in - ensure they land on dashboard
       setCurrentView('dashboard');
       setCurrentReportId(null);
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, user]);
 
   const handleNavigateToReport = (reportId: string) => {
     setCurrentReportId(reportId);
