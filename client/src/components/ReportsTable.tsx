@@ -223,7 +223,7 @@ export default function ReportsTable({
                   {showSummary ? (
                     <>
                       <TableCell>
-                        <p className="text-sm text-gray-900">{report.summary}</p>
+                        <p className="text-sm text-[#ffffff]">{report.summary}</p>
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center">
