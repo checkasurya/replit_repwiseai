@@ -1,0 +1,138 @@
+# RepWise(AI) – Web Application Product Requirements & Implementation Plan
+
+> **Scope:** Front‑end–only Angular 17 + Tailwind CSS demo that enables Healthcare Representatives and their Direct Managers to review KPI metrics, exchange coaching feedback, and receive AI‑driven training recommendations.
+
+---
+
+## 1 Product Overview
+
+RepWise(AI) streamlines field‑force performance management by combining KPI visibility, structured coaching workflows, and embedded AI guidance in a single web app.
+
+* **Primary Personas**
+
+  * *Healthcare Representative* – views personal KPIs & coaching actions
+  * *Direct Manager* – monitors team KPIs, initiates coaching, adds feedback
+* **Success KPIs (MVP)**
+
+  | Metric                                                 | Target                     |
+  | ------------------------------------------------------ | -------------------------- |
+  | Rep login success rate                                 | ≥ 95 %                     |
+  | Time to locate latest coaching report                  | ≤ 15 s                     |
+  | AI training recommendation accuracy (proxy rule‑based) | ≥ 80 % match with SME list |
+
+---
+
+## 2 Process Stages, Features, Sub‑features, Tasks
+
+The matrix below shows every feature mapped to implementation tasks (►) and sub‑tasks (▪︎). Numbers reference Jira‑ready story IDs (e.g. **AUTH‑1**).
+
+### 2.1 Authentication
+
+| Feature                   | Sub‑features                                                           | Tasks & Sub‑tasks                                                                                                                                                                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Secure Login / Logout** | Email + password form • Mock JWT session • Role switch (Rep / Manager) | ► **AUTH‑1** Build login component▪︎ AUTH‑1a Validate email pattern▪︎ AUTH‑1b Password strength check (min 6 chars)► **AUTH‑2** Implement AuthService (RxJS store)▪︎ AUTH‑2a Static JSON user list▪︎ AUTH‑2b Generate mock JWT & expiry► **AUTH‑3** Guard protected routes► **AUTH‑4** Implement logout & session timeout |
+
+### 2.2 Landing Page UI (Dashboard)
+
+| Feature                                     | Sub‑features                                                  | Tasks & Sub‑tasks                                                                                                                                                        |
+| ------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Ongoing Coaching Reports Table**          | Sortable headers • Search box • Status badge • Action buttons | ► **DASH‑1** Table component scaffold (Tailwind grid)▪︎ DASH‑1a Generic sort mixin▪︎ DASH‑1b Fuzzy search pipe► **DASH‑2** Bind mock `reports.json` (status≠"Completed") |
+| **Last Coaching Report per Reportee Table** | Deduplicated by reportee • Summary column                     | ► **DASH‑3** Derive latest reports util► **DASH‑4** Render second table beneath first                                                                                    |
+| **Create New Report Button**                | Floating action • Opens placeholder dialog                    | ► **DASH‑5** FAB component w/ click handler                                                                                                                              |
+
+### 2.3 KPI Metrics in Coaching Report
+
+| Feature                      | Sub‑features                        | Tasks & Sub‑tasks                                                                                                            |
+| ---------------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **KPI Display Panel**        | Metric cards • Trend indicator (▲▼) | ► **KPI‑1** Define `kpi.model.ts` (sales, calls, appts, conv.)► **KPI‑2** KPICardComponent▪︎ KPI‑2a Colour‑code by threshold |
+| **Manager Feedback Section** | Rich‑text area • Autosave draft     | ► **KPI‑3** FeedbackFormComponent▪︎ KPI‑3a Quill.js integration (simple toolbar)▪︎ KPI‑3b Draft persistence in LocalStorage  |
+
+### 2.4 Statistical Analysis & Training Recommendations
+
+| Feature                     | Sub‑features                                     | Tasks & Sub‑tasks                                                                                                                              |
+| --------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Rule‑based KPI Analyzer** | Threshold rules • Mapping table (KPI → training) | ► **AI‑1** `analysis.service.ts`▪︎ AI‑1a Encode rules (e.g. convRate < 0.15 → "Conversion Skills Training")► **AI‑2** Unit tests for each rule |
+| **Recommendation Sidebar**  | Collapsible panel • Accept/ignore buttons        | ► **AI‑3** RecommendationsComponent▪︎ AI‑3a Badge count of new recs▪︎ AI‑3b Emit accepted rec event                                            |
+
+### 2.5 Coaching Report Form (View/Edit)
+
+| Feature                    | Sub‑features                                                         | Tasks & Sub‑tasks                                                                                                                         |
+| -------------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Report Container**       | Header (name, dates) • KPI panel • Recommendations • Feedback fields | ► **REP‑1** Router page `/report/:id`► **REP‑2** Load report & rep KPIs via ReportService► **REP‑3** Combine KPI, AI, Feedback components |
+| **Save & Status Workflow** | Save draft • Mark completed                                          | ► **REP‑4** Save button → update LocalStorage▪︎ REP‑4a Toast confirmation► **REP‑5** Status dropdown (Ongoing/Completed)                  |
+
+### 2.6 Data Layer (Mock)
+
+| Feature               | Sub‑features                                     | Tasks & Sub‑tasks                                                                                                                                |
+| --------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Mock Data Service** | Static JSON • CRUD in memory • LocalStorage sync | ► **DATA‑1** Define data schemas `user.json`, `report.json`, `kpi.json`, `training.json`► **DATA‑2** ReportService (singleton) with CRUD methods |
+
+### 2.7 Bonus & Cross‑Cutting
+
+| Feature                            | Tasks & Sub‑tasks                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------------- |
+| **Reusable Sort/Search Directive** | ► **UTIL‑1** `sortable.directive.ts`► **UTIL‑2** `search.pipe.ts`                   |
+| **Responsive & Accessible UI**     | ► **UX‑1** Tailwind config for breakpoints► **UX‑2** aria‑labels & keyboard nav     |
+| **Testing & CI**                   | ► **CI‑1** Jest + Angular testing setup► **CI‑2** GitHub Action – lint, test, build |
+
+---
+
+## 3 Non‑Functional Requirements (MVP)
+
+1. 100 % client‑side; no network calls required
+2. Responsive down to 320 px; looks native in iPad Safari
+3. Lighthouse Accessibility ≥ 90
+4. Unit‑test coverage ≥ 60 %
+
+---
+
+## 4 Assumptions & Constraints
+
+* Only synthetic data—no PHI or PII
+* Future phase may replace rule‑based analyzer with ML micro‑service
+
+---
+
+## 5 Milestones & Timeline (indicative)
+
+| Sprint (1 w) | Key Deliverables                       |
+| ------------ | -------------------------------------- |
+| S1           | AUTH‑1→4, DATA‑1                       |
+| S2           | DASH‑1→4                               |
+| S3           | KPI‑1→3, REP‑1                         |
+| S4           | AI‑1→3, REP‑2→3                        |
+| S5           | REP‑4→5, UTIL‑1→2                      |
+| S6           | Polish, UX‑1→2, CI pipeline, demo prep |
+
+---
+
+### Appendix – Mock JSON Examples
+
+```json
+// report.json
+[
+  {
+    "id": "RPT‑1001",
+    "reporteeId": "REP‑01",
+    "managerId": "MGR‑99",
+    "dateStarted": "2025‑07‑01",
+    "status": "Ongoing",
+    "kpi": {
+      "sales": 12000,
+      "calls": 55,
+      "appointments": 12,
+      "conversionRate": 0.18
+    },
+    "feedback": "",
+    "recommendations": []
+  }
+]
+```
+
+---
+
+### Revision History
+
+| Date       | Version | Author       | Notes                            |
+| ---------- | ------- | ------------ | -------------------------------- |
+| 2025‑07‑04 | 0.1     | Product Team | Initial combined PRD + task plan |
