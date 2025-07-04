@@ -85,7 +85,7 @@ export default function RecommendationsSidebar({
     <Card className="material-shadow sticky top-6">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold text-gray-900">
+          <CardTitle className="tracking-tight text-lg font-semibold text-[#0048d1]">
             AI Recommendations
           </CardTitle>
           <Badge variant="secondary" className="bg-blue-100 text-blue-800">
