@@ -103,8 +103,8 @@ export default function Dashboard({ onNavigateToReport }: DashboardProps) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Dashboard Header */}
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">Performance Dashboard</h2>
-        <p className="text-gray-600 mt-1">
+        <h2 className="text-h1 text-[var(--gp-content-primary)]">Performance Dashboard</h2>
+        <p className="text-body-l text-[var(--gp-content-secondary)] mt-1">
           Manage your team's coaching reports and track performance metrics
         </p>
       </div>
@@ -112,17 +112,17 @@ export default function Dashboard({ onNavigateToReport }: DashboardProps) {
       {/* Quick Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {quickStatsCards.map((stat, index) => (
-          <Card key={index} className="material-shadow">
+          <Card key={index} className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2">
             <CardContent className="p-6">
               <div className="flex items-center">
-                <div className={`${stat.bg} rounded-lg p-3`}>
-                  <div className={stat.iconColor}>
+                <div className={`bg-[var(--gp-brand-accent)] rounded-lg p-3`}>
+                  <div className="text-[var(--gp-surface-base)]">
                     {stat.icon}
                   </div>
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-body-s font-medium text-[var(--gp-content-secondary)]">{stat.title}</p>
+                  <p className="text-h2 text-[var(--gp-content-primary)]">{stat.value}</p>
                 </div>
               </div>
             </CardContent>
@@ -153,7 +153,7 @@ export default function Dashboard({ onNavigateToReport }: DashboardProps) {
       {/* Floating Action Button */}
       <Button
         onClick={handleCreateNewReport}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 text-white material-shadow-lg p-0"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[var(--gp-brand-accent)] hover:bg-[var(--gp-brand-accent)] text-[var(--gp-surface-base)] gp-elevation-2 hover:gp-elevation-2 gp-motion-fast p-0 gp-focus-ring"
         aria-label="Create new coaching report"
       >
         <Plus className="w-6 h-6" />

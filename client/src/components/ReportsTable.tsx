@@ -109,13 +109,13 @@ export default function ReportsTable({
   };
 
   return (
-    <Card className="material-shadow">
-      <CardHeader className="border-b border-gray-200">
+    <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)]">
+      <CardHeader className="border-b border-[var(--gp-border-subtle)]">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <CardTitle className="text-lg font-semibold text-gray-900">{title}</CardTitle>
+            <CardTitle className="text-h2 text-[var(--gp-content-primary)]">{title}</CardTitle>
             {description && (
-              <p className="text-sm text-gray-600 mt-1">{description}</p>
+              <p className="text-body-l text-[var(--gp-content-secondary)] mt-1">{description}</p>
             )}
           </div>
           <div className="mt-4 sm:mt-0 sm:ml-4 flex items-center space-x-3">
@@ -125,15 +125,15 @@ export default function ReportsTable({
                 placeholder="Search reports..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-64"
+                className="pl-10 w-64 bg-[var(--gp-surface-base)] border-[var(--gp-border-subtle)] text-[var(--gp-content-primary)] gp-focus-ring"
               />
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 text-[var(--gp-content-tertiary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
             </div>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="gp-btn-secondary gp-focus-ring">
               <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.207A1 1 0 013 6.5V4z" />
               </svg>
@@ -151,7 +151,7 @@ export default function ReportsTable({
                   <Button
                     variant="ghost"
                     onClick={() => handleSort('reporteeName')}
-                    className="h-auto p-0 font-medium text-xs text-gray-500 uppercase tracking-wider hover:bg-gray-100"
+                    className="h-auto p-0 font-medium text-h3 text-[var(--gp-content-tertiary)] uppercase tracking-wider hover:bg-[var(--gp-surface-base)] gp-focus-ring"
                   >
                     Reportee
                     <ArrowUpDown className="ml-1 h-3 w-3" />
@@ -161,7 +161,7 @@ export default function ReportsTable({
                   <Button
                     variant="ghost"
                     onClick={() => handleSort('dateStarted')}
-                    className="h-auto p-0 font-medium text-xs text-gray-500 uppercase tracking-wider hover:bg-gray-100"
+                    className="h-auto p-0 font-medium text-h3 text-[var(--gp-content-tertiary)] uppercase tracking-wider hover:bg-[var(--gp-surface-base)] gp-focus-ring"
                   >
                     {showSummary ? 'Last Report' : 'Date Started'}
                     <ArrowUpDown className="ml-1 h-3 w-3" />
@@ -202,22 +202,22 @@ export default function ReportsTable({
               {filteredAndSortedReports.map((report) => (
                 <TableRow
                   key={report.id}
-                  className="hover:bg-gray-50 cursor-pointer"
+                  className="hover:bg-[var(--gp-surface-sunken)] cursor-pointer gp-motion-fast border-b border-[var(--gp-border-subtle)]"
                   onClick={() => onReportClick(report.id)}
                 >
                   <TableCell>
                     <div className="flex items-center">
                       <Avatar className="w-8 h-8 mr-3">
-                        <AvatarFallback className="bg-blue-100 text-blue-600 text-sm font-medium">
+                        <AvatarFallback className="bg-[var(--gp-brand-accent)] text-[var(--gp-surface-base)] text-sm font-medium">
                           {getInitials(report.reporteeName)}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-sm font-medium text-gray-900">
+                      <span className="text-body-l font-medium text-[var(--gp-content-primary)]">
                         {report.reporteeName}
                       </span>
                     </div>
                   </TableCell>
-                  <TableCell className="text-sm text-gray-500">
+                  <TableCell className="text-body-l text-[var(--gp-content-secondary)]">
                     {new Date(showSummary ? report.lastReportDate || report.dateStarted : report.dateStarted).toLocaleDateString()}
                   </TableCell>
                   {showSummary ? (

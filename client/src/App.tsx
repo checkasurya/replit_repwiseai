@@ -54,7 +54,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-[var(--gp-surface-base)]">
           <Header currentView={currentView} onNavigate={handleNavigate} />
           <main>
             {currentView === 'dashboard' && (
