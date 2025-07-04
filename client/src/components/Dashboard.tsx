@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Users, TrendingUp, Lightbulb, AlertTriangle } from 'lucide-react';
+import { Plus, Users, TrendingUp, Lightbulb, AlertTriangle, BarChart3, Target, Bell } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import ReportsTable from './ReportsTable';
@@ -8,9 +8,17 @@ import { useToast } from '@/hooks/use-toast';
 
 interface DashboardProps {
   onNavigateToReport: (reportId: string) => void;
+  onNavigateToAnalytics?: () => void;
+  onNavigateToGoals?: () => void;
+  onNavigateToNotifications?: () => void;
 }
 
-export default function Dashboard({ onNavigateToReport }: DashboardProps) {
+export default function Dashboard({ 
+  onNavigateToReport, 
+  onNavigateToAnalytics, 
+  onNavigateToGoals, 
+  onNavigateToNotifications 
+}: DashboardProps) {
   const { toast } = useToast();
   const stats = getQuickStats();
 
@@ -128,6 +136,58 @@ export default function Dashboard({ onNavigateToReport }: DashboardProps) {
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      {/* Feature Navigation */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToAnalytics}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-body-l font-semibold text-[var(--gp-content-primary)] mb-2">Team Analytics</h3>
+                <p className="text-body-s text-[var(--gp-content-secondary)]">
+                  View performance trends, team insights, and training analytics
+                </p>
+              </div>
+              <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3">
+                <BarChart3 className="w-6 h-6 text-[var(--gp-surface-base)]" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToGoals}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-body-l font-semibold text-[var(--gp-content-primary)] mb-2">Goal Tracker</h3>
+                <p className="text-body-s text-[var(--gp-content-secondary)]">
+                  Set targets, monitor progress, and track team achievements
+                </p>
+              </div>
+              <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3">
+                <Target className="w-6 h-6 text-[var(--gp-surface-base)]" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToNotifications}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-body-l font-semibold text-[var(--gp-content-primary)] mb-2">Notifications</h3>
+                <p className="text-body-s text-[var(--gp-content-secondary)]">
+                  Stay updated on performance alerts and system updates
+                </p>
+              </div>
+              <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3 relative">
+                <Bell className="w-6 h-6 text-[var(--gp-surface-base)]" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Ongoing Coaching Reports Table */}
