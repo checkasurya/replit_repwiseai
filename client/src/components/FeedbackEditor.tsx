@@ -97,7 +97,7 @@ export default function FeedbackEditor({ reportId, initialFeedback = '', onSave 
   return (
     <Card className="material-shadow">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-gray-900">Manager Feedback</CardTitle>
+        <CardTitle className="text-lg font-semibold text-[#1049e3]">Manager Feedback</CardTitle>
       </CardHeader>
       <CardContent>
         {/* Rich Text Toolbar */}
