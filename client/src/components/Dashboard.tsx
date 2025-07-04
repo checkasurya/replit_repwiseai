@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Users, TrendingUp, Lightbulb, AlertTriangle, BarChart3, Target, Bell } from 'lucide-react';
+import { Plus, Users, TrendingUp, Lightbulb, AlertTriangle, BarChart3, Target, Bell, PieChart, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import ReportsTable from './ReportsTable';
@@ -11,13 +11,17 @@ interface DashboardProps {
   onNavigateToAnalytics?: () => void;
   onNavigateToGoals?: () => void;
   onNavigateToNotifications?: () => void;
+  onNavigateToAdvancedAnalytics?: () => void;
+  onNavigateToReporting?: () => void;
 }
 
 export default function Dashboard({ 
   onNavigateToReport, 
   onNavigateToAnalytics, 
   onNavigateToGoals, 
-  onNavigateToNotifications 
+  onNavigateToNotifications,
+  onNavigateToAdvancedAnalytics,
+  onNavigateToReporting
 }: DashboardProps) {
   const { toast } = useToast();
   const stats = getQuickStats();
@@ -139,7 +143,7 @@ export default function Dashboard({
       </div>
 
       {/* Feature Navigation */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
         <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToAnalytics}>
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -184,6 +188,38 @@ export default function Dashboard({
               <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3 relative">
                 <Bell className="w-6 h-6 text-[var(--gp-surface-base)]" />
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToAdvancedAnalytics}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-body-l font-semibold text-[var(--gp-content-primary)] mb-2">Advanced Analytics</h3>
+                <p className="text-body-s text-[var(--gp-content-secondary)]">
+                  Deep performance insights, trends, and comprehensive analysis
+                </p>
+              </div>
+              <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3">
+                <PieChart className="w-6 h-6 text-[var(--gp-surface-base)]" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="gp-elevation-1 bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] gp-motion-fast hover:gp-elevation-2 cursor-pointer" onClick={onNavigateToReporting}>
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-body-l font-semibold text-[var(--gp-content-primary)] mb-2">Reporting</h3>
+                <p className="text-body-s text-[var(--gp-content-secondary)]">
+                  Generate, schedule, and manage comprehensive reports
+                </p>
+              </div>
+              <div className="bg-[var(--gp-brand-accent)] rounded-lg p-3">
+                <FileText className="w-6 h-6 text-[var(--gp-surface-base)]" />
               </div>
             </div>
           </CardContent>

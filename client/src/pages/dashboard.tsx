@@ -5,13 +5,17 @@ interface DashboardPageProps {
   onNavigateToAnalytics?: () => void;
   onNavigateToGoals?: () => void;
   onNavigateToNotifications?: () => void;
+  onNavigateToAdvancedAnalytics?: () => void;
+  onNavigateToReporting?: () => void;
 }
 
 export default function DashboardPage({ 
   onNavigateToReport, 
   onNavigateToAnalytics, 
   onNavigateToGoals, 
-  onNavigateToNotifications 
+  onNavigateToNotifications,
+  onNavigateToAdvancedAnalytics,
+  onNavigateToReporting
 }: DashboardPageProps) {
   return (
     <Dashboard 
@@ -19,6 +23,8 @@ export default function DashboardPage({
       onNavigateToAnalytics={onNavigateToAnalytics}
       onNavigateToGoals={onNavigateToGoals}
       onNavigateToNotifications={onNavigateToNotifications}
+      onNavigateToAdvancedAnalytics={onNavigateToAdvancedAnalytics}
+      onNavigateToReporting={onNavigateToReporting}
     />
   );
 }

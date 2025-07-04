@@ -11,10 +11,12 @@ import ReportPage from "@/pages/report";
 import AnalyticsDashboard from "@/components/AnalyticsDashboard";
 import GoalTracker from "@/components/GoalTracker";
 import NotificationCenter from "@/components/NotificationCenter";
+import AdvancedAnalytics from "@/components/AdvancedAnalytics";
+import ReportingDashboard from "@/components/ReportingDashboard";
 
 function App() {
   const { user, isLoading, isAuthenticated } = useAuth();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'report' | 'analytics' | 'goals' | 'notifications'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'report' | 'analytics' | 'goals' | 'notifications' | 'advanced-analytics' | 'reporting'>('dashboard');
   const [currentReportId, setCurrentReportId] = useState<string | null>(null);
 
   // Reset view state when user authentication status changes
@@ -52,6 +54,14 @@ function App() {
     setCurrentView('notifications');
   };
 
+  const handleNavigateToAdvancedAnalytics = () => {
+    setCurrentView('advanced-analytics');
+  };
+
+  const handleNavigateToReporting = () => {
+    setCurrentView('reporting');
+  };
+
   const handleNavigate = (view: string) => {
     if (view === 'dashboard') {
       handleBackToDashboard();
@@ -61,6 +71,10 @@ function App() {
       handleNavigateToGoals();
     } else if (view === 'notifications') {
       handleNavigateToNotifications();
+    } else if (view === 'advanced-analytics') {
+      handleNavigateToAdvancedAnalytics();
+    } else if (view === 'reporting') {
+      handleNavigateToReporting();
     }
   };
 
@@ -96,6 +110,8 @@ function App() {
                 onNavigateToAnalytics={handleNavigateToAnalytics}
                 onNavigateToGoals={handleNavigateToGoals}
                 onNavigateToNotifications={handleNavigateToNotifications}
+                onNavigateToAdvancedAnalytics={handleNavigateToAdvancedAnalytics}
+                onNavigateToReporting={handleNavigateToReporting}
               />
             )}
             {currentView === 'report' && currentReportId && (
@@ -112,6 +128,12 @@ function App() {
             )}
             {currentView === 'notifications' && (
               <NotificationCenter onBack={handleBackToDashboard} />
+            )}
+            {currentView === 'advanced-analytics' && (
+              <AdvancedAnalytics onBack={handleBackToDashboard} />
+            )}
+            {currentView === 'reporting' && (
+              <ReportingDashboard onBack={handleBackToDashboard} />
             )}
           </main>
         </div>
