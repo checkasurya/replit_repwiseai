@@ -5,6 +5,8 @@ import {
   type KpiMetric, type InsertKpiMetric,
   type TrainingRecommendation, type InsertTrainingRecommendation 
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   // Users
@@ -243,4 +245,87 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export class DatabaseStorage implements IStorage {
+  async getUser(id: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.email, email));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async getReport(id: string): Promise<Report | undefined> {
+    const [report] = await db.select().from(reports).where(eq(reports.id, id));
+    return report || undefined;
+  }
+
+  async getReportsByManagerId(managerId: string): Promise<Report[]> {
+    return await db.select().from(reports).where(eq(reports.managerId, managerId));
+  }
+
+  async getReportsByReporteeId(reporteeId: string): Promise<Report[]> {
+    return await db.select().from(reports).where(eq(reports.reporteeId, reporteeId));
+  }
+
+  async createReport(insertReport: InsertReport): Promise<Report> {
+    const [report] = await db
+      .insert(reports)
+      .values(insertReport)
+      .returning();
+    return report;
+  }
+
+  async updateReport(id: string, updates: Partial<Report>): Promise<Report | undefined> {
+    const [report] = await db
+      .update(reports)
+      .set({ ...updates, updatedAt: new Date() })
+      .where(eq(reports.id, id))
+      .returning();
+    return report || undefined;
+  }
+
+  async getKpiMetricsByReportId(reportId: string): Promise<KpiMetric[]> {
+    return await db.select().from(kpiMetrics).where(eq(kpiMetrics.reportId, reportId));
+  }
+
+  async createKpiMetric(insertMetric: InsertKpiMetric): Promise<KpiMetric> {
+    const [metric] = await db
+      .insert(kpiMetrics)
+      .values(insertMetric)
+      .returning();
+    return metric;
+  }
+
+  async getRecommendationsByReportId(reportId: string): Promise<TrainingRecommendation[]> {
+    return await db.select().from(trainingRecommendations).where(eq(trainingRecommendations.reportId, reportId));
+  }
+
+  async createRecommendation(insertRecommendation: InsertTrainingRecommendation): Promise<TrainingRecommendation> {
+    const [recommendation] = await db
+      .insert(trainingRecommendations)
+      .values(insertRecommendation)
+      .returning();
+    return recommendation;
+  }
+
+  async updateRecommendation(id: string, updates: Partial<TrainingRecommendation>): Promise<TrainingRecommendation | undefined> {
+    const [recommendation] = await db
+      .update(trainingRecommendations)
+      .set(updates)
+      .where(eq(trainingRecommendations.id, id))
+      .returning();
+    return recommendation || undefined;
+  }
+}
+
+export const storage = new DatabaseStorage();

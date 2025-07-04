@@ -16,8 +16,9 @@ RepWise(AI) is a web application designed to streamline healthcare representativ
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js
 - **API Pattern**: RESTful API with JSON responses
-- **Database ORM**: Drizzle ORM with PostgreSQL dialect
-- **Session Management**: In-memory storage for development, designed for PostgreSQL in production
+- **Database**: PostgreSQL with Drizzle ORM for type-safe database operations
+- **Database Storage**: DatabaseStorage class implementing persistent PostgreSQL storage
+- **Session Management**: Database-backed user authentication and session management
 - **Development Server**: Vite middleware integration for hot module replacement
 
 ### Database Schema
@@ -90,13 +91,13 @@ RepWise(AI) is a web application designed to streamline healthcare representativ
 
 ### Development Environment
 - Vite development server with hot module replacement
-- In-memory storage for rapid prototyping
-- Mock data generation for testing workflows
+- PostgreSQL database for persistent data storage
+- Database seeding for consistent development data
 - Replit-specific tooling for cloud development
 
 ### Production Considerations
 - Express.js server with bundled client assets
-- PostgreSQL database with Drizzle migrations
+- PostgreSQL database with Drizzle ORM and type safety
 - Environment variable configuration for database connectivity
 - Static asset serving with optimized builds
 
@@ -110,7 +111,12 @@ RepWise(AI) is a web application designed to streamline healthcare representativ
 
 ```
 Changelog:
-- July 04, 2025. Initial setup
+- July 04, 2025: Initial setup
+- July 04, 2025: Successfully migrated from in-memory storage to PostgreSQL database
+  - Added PostgreSQL database schema with users, reports, kpiMetrics, and trainingRecommendations tables
+  - Implemented DatabaseStorage class for persistent data operations
+  - Created database seeding with sample users (manager + 3 reps) and coaching reports
+  - All API endpoints now use persistent database storage
 ```
 
 ## User Preferences

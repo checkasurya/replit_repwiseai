@@ -1,4 +1,5 @@
 import { pgTable, text, serial, integer, timestamp, json, decimal } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -48,6 +49,45 @@ export const trainingRecommendations = pgTable("training_recommendations", {
   status: text("status").notNull(), // 'pending' | 'accepted' | 'ignored'
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+// Relations
+export const usersRelations = relations(users, ({ one, many }) => ({
+  manager: one(users, {
+    fields: [users.managerId],
+    references: [users.id],
+  }),
+  managedReports: many(reports, { relationName: "manager" }),
+  reporteeReports: many(reports, { relationName: "reportee" }),
+}));
+
+export const reportsRelations = relations(reports, ({ one, many }) => ({
+  manager: one(users, {
+    fields: [reports.managerId],
+    references: [users.id],
+    relationName: "manager",
+  }),
+  reportee: one(users, {
+    fields: [reports.reporteeId],
+    references: [users.id],
+    relationName: "reportee",
+  }),
+  kpiMetrics: many(kpiMetrics),
+  recommendations: many(trainingRecommendations),
+}));
+
+export const kpiMetricsRelations = relations(kpiMetrics, ({ one }) => ({
+  report: one(reports, {
+    fields: [kpiMetrics.reportId],
+    references: [reports.id],
+  }),
+}));
+
+export const trainingRecommendationsRelations = relations(trainingRecommendations, ({ one }) => ({
+  report: one(reports, {
+    fields: [trainingRecommendations.reportId],
+    references: [reports.id],
+  }),
+}));
 
 export const insertUserSchema = createInsertSchema(users).omit({
   id: true,
