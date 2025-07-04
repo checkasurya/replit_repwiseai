@@ -173,13 +173,12 @@ export default function ReportDetail({ reportId, onBack }: ReportDetailProps) {
           Back to Dashboard
         </Button>
       </div>
-
       {/* Report Header */}
       <Card className="material-shadow mb-8">
         <CardContent className="p-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">
+              <h1 className="text-2xl font-bold text-[#0048d1]">
                 {report.reporteeName} - Coaching Report
               </h1>
               <p className="text-gray-600 mt-1">
@@ -204,14 +203,13 @@ export default function ReportDetail({ reportId, onBack }: ReportDetailProps) {
           </div>
         </CardContent>
       </Card>
-
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Main Content Area */}
         <div className="lg:col-span-3 space-y-8">
           {/* KPI Metrics Panel */}
           <Card className="material-shadow">
             <CardContent className="p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-6">Performance Metrics</h2>
+              <h2 className="text-lg font-semibold mb-6 text-[#0048d1]">Performance Metrics</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <KPICard
