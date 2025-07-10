@@ -654,7 +654,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       {/* Footer */}
       <footer className="relative bg-slate-900 border-t border-slate-700 py-12 px-6 z-10">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
@@ -688,15 +688,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                 <div className="text-slate-400 text-sm">Help Center</div>
                 <div className="text-slate-400 text-sm">Training</div>
                 <div className="text-slate-400 text-sm">Status Page</div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-white font-semibold mb-4">Demo Credentials</h4>
-              <div className="space-y-2 text-sm">
-                <div className="text-slate-300">Manager: manager@example.com</div>
-                <div className="text-slate-300">Rep: rep1@example.com</div>
-                <div className="text-slate-400">Password: password123</div>
               </div>
             </div>
           </div>

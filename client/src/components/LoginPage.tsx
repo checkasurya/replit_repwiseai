@@ -13,8 +13,8 @@ interface LoginPageProps {
 }
 
 export default function LoginPage({ onBack }: LoginPageProps) {
-  const [email, setEmail] = useState('manager@healthcorp.com');
-  const [password, setPassword] = useState('password123');
+  const [email, setEmail] = useState('admin@healthcorp.com');
+  const [password, setPassword] = useState('admin123');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const { toast } = useToast();
@@ -96,17 +96,17 @@ export default function LoginPage({ onBack }: LoginPageProps) {
         </div>
       </header>
 
-      <Card className="w-full max-w-md bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-16">
-        <CardContent className="p-8">
-          <div className="text-center mb-8">
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8" />
+      <Card className="w-full max-w-sm bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-8">
+        <CardContent className="p-6">
+          <div className="text-center mb-6">
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
+              <Lock className="w-6 h-6" />
             </div>
-            <h1 className="text-2xl font-bold text-white mb-2">Welcome Back</h1>
-            <p className="text-slate-300">Sign in to access your RepWise dashboard</p>
+            <h1 className="text-xl font-bold text-white mb-2">Welcome Back</h1>
+            <p className="text-slate-300 text-sm">Sign in to access your RepWise dashboard</p>
           </div>
 
-          <form onSubmit={handleFormSubmit} className="space-y-6">
+          <form onSubmit={handleFormSubmit} className="space-y-4">
             <div>
               <Label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
                 Username
@@ -146,17 +146,17 @@ export default function LoginPage({ onBack }: LoginPageProps) {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3"
+              className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-2"
             >
               {isLoading ? 'Signing In...' : 'Sign In'}
             </Button>
           </form>
 
-          <div className="mt-6 p-4 bg-slate-700/30 rounded-lg border border-slate-600">
+          <div className="mt-4 p-3 bg-slate-700/30 rounded-lg border border-slate-600">
             <div className="text-center">
               <p className="text-sm text-slate-300 mb-2 font-medium">Demo credentials:</p>
               <div className="text-xs text-slate-400 space-y-1">
-                <div className="font-mono">root / tiger</div>
+                <div className="font-mono">admin / admin123</div>
               </div>
             </div>
           </div>

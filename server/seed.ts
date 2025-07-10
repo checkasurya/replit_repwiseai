@@ -7,6 +7,15 @@ async function seed() {
   // Insert users
   const insertedUsers = await db.insert(users).values([
     {
+      id: "ADM-01",
+      username: "admin",
+      email: "admin@healthcorp.com",
+      password: "admin123",
+      name: "Admin User",
+      role: "manager",
+      managerId: null,
+    },
+    {
       id: "MGR-99",
       username: "manager",
       email: "manager@healthcorp.com",
