@@ -66,7 +66,7 @@ export default function LoginPage({ onBack }: LoginPageProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
       {/* Header */}
       <header className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-sm border-b border-slate-700 z-50">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-6 py-4 pt-[10px] pb-[10px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
@@ -95,7 +95,6 @@ export default function LoginPage({ onBack }: LoginPageProps) {
           </div>
         </div>
       </header>
-
       <Card className="w-full max-w-sm bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-8">
         <CardContent className="p-6">
           <div className="text-center mb-6">
