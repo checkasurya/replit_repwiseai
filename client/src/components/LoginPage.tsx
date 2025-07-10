@@ -13,7 +13,7 @@ interface LoginPageProps {
 }
 
 export default function LoginPage({ onBack }: LoginPageProps) {
-  const [email, setEmail] = useState('admin@healthcorp.com');
+  const [email, setEmail] = useState('admin');
   const [password, setPassword] = useState('admin123');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
