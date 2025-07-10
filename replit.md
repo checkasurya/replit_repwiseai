@@ -131,6 +131,12 @@ Changelog:
   - Added smooth scrolling between sections and proper mobile responsiveness
   - Enhanced login page with back navigation and demo credentials display
   - All components now use relative z-index positioning for proper layering
+- July 10, 2025: Updated landing page layout to match reference designs
+  - Restructured hero section with text content on left, dashboard on right
+  - Positioned blue coaching dashboard slightly left of center with reduced size
+  - Moved EXPLORE FEATURES button below dashboard on right side
+  - Updated feature icons: UserCheck (Standardized Coaching), Eye (Centralized Insights), GraduationCap (Targeted Development), Shield (Enhanced Accountability)
+  - Maintained campaign technology theme throughout content
 ```
 
 ## User Preferences

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle, Eye, GraduationCap, Shield } from "lucide-react";
+import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle, Eye, GraduationCap, Shield, UserCheck } from "lucide-react";
 import { Link } from "wouter";
 
 interface LandingPageProps {
@@ -135,8 +135,9 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       {/* Hero Section */}
       <section className="relative pt-24 pb-12 px-6 z-10">
         <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="flex items-center justify-between">
+            {/* Left side - Text Content */}
+            <div className="w-1/2 space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                   <span className="text-white">Advanced</span>
@@ -151,10 +152,95 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                   <span className="text-white"> to advance your business</span>
                 </h1>
                 
-                <p className="text-xl text-slate-300 leading-relaxed">Deliver consistent, real-time feedback and actionable insights.
-                AI-driven coaching for sales force development and accountability.</p>
+                <p className="text-xl text-slate-300 leading-relaxed">
+                  Deliver consistent, real-time feedback and actionable insights.
+                  AI-driven coaching for sales force development and accountability.
+                </p>
+              </div>
+            </div>
+
+            {/* Right side - Dashboard positioned slightly left of center */}
+            <div className="w-1/2 flex flex-col items-center space-y-6">
+              <div className="relative w-full max-w-lg ml-[-2rem]">
+                {/* Coaching Dashboard Mockup - Based on Image 2 */}
+                <div className="relative w-full h-80 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 rounded-2xl overflow-hidden shadow-2xl">
+                  {/* Header */}
+                  <div className="text-center pt-6 pb-3">
+                    <h2 className="text-xl font-bold text-white mb-1">Repwise(AI)</h2>
+                    <h3 className="text-sm font-semibold text-blue-200 mb-1">Centralized Coaching & Feedback</h3>
+                    <p className="text-xs text-blue-300">Empowering Salesforce Development with Data-Driven Insights</p>
+                  </div>
+
+                  {/* Main Coaching Scene */}
+                  <div className="flex items-center justify-center px-6 pt-3">
+                    {/* Left Dashboard */}
+                    <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 mr-3">
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-3 w-3 text-green-400" />
+                          <div className="bg-blue-400/20 rounded h-1.5 w-12"></div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-3 w-3 text-green-400" />
+                          <div className="bg-blue-400/20 rounded h-1.5 w-14"></div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-3 w-3 text-green-400" />
+                          <div className="bg-blue-400/20 rounded h-1.5 w-10"></div>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <div className="h-3 w-3 border border-blue-400/50 rounded"></div>
+                          <div className="bg-blue-400/10 rounded h-1.5 w-12"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Center Silhouettes */}
+                    <div className="flex items-center space-x-4">
+                      <div className="w-8 h-16 bg-slate-700/80 rounded-full relative">
+                        <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-slate-600 rounded-full"></div>
+                      </div>
+                      <div className="w-8 h-16 bg-slate-700/80 rounded-full relative">
+                        <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-slate-600 rounded-full"></div>
+                      </div>
+                      <div className="w-8 h-16 bg-slate-700/80 rounded-full relative">
+                        <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-slate-600 rounded-full"></div>
+                      </div>
+                    </div>
+
+                    {/* Right Dashboard */}
+                    <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-3 border border-blue-400/30 ml-3">
+                      <div className="space-y-2">
+                        <div className="flex items-center space-x-2">
+                          <Users className="h-3 w-3 text-blue-300" />
+                          <div className="bg-blue-400/20 rounded h-1.5 w-8"></div>
+                        </div>
+                        <div className="space-y-1">
+                          <BarChart3 className="h-4 w-4 text-blue-300" />
+                          <div className="flex space-x-1">
+                            <div className="bg-blue-400 rounded w-1.5 h-4"></div>
+                            <div className="bg-blue-500 rounded w-1.5 h-6"></div>
+                            <div className="bg-blue-400 rounded w-1.5 h-3"></div>
+                            <div className="bg-blue-600 rounded w-1.5 h-5"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* AI Badge */}
+                  <div className="absolute top-3 right-3">
+                    <div className="bg-blue-500/30 backdrop-blur-sm rounded-full px-2 py-1 border border-blue-400/30">
+                      <div className="flex items-center space-x-1">
+                        <Brain className="h-3 w-3 text-blue-300" />
+                        <span className="text-xs text-blue-200 font-medium">AI</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* EXPLORE FEATURES button below dashboard */}
               <Button 
                 onClick={scrollToFeatures}
                 size="lg"
@@ -162,85 +248,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
               >
                 EXPLORE FEATURES
               </Button>
-            </div>
-
-            <div className="relative">
-              {/* Coaching Dashboard Mockup - Based on Image 2 */}
-              <div className="relative w-full h-96 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 rounded-2xl overflow-hidden shadow-2xl">
-                {/* Header */}
-                <div className="text-center pt-8 pb-4">
-                  <h2 className="text-2xl font-bold text-white mb-2">Repwise(AI)</h2>
-                  <h3 className="text-lg font-semibold text-blue-200 mb-2">Centralized Coaching & Feedback</h3>
-                  <p className="text-sm text-blue-300">Empowering Salesforce Development with Data-Driven Insights</p>
-                </div>
-
-                {/* Main Coaching Scene */}
-                <div className="flex items-center justify-center px-8 pt-4">
-                  {/* Left Dashboard */}
-                  <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-4 border border-blue-400/30 mr-4">
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
-                        <div className="bg-blue-400/20 rounded h-2 w-16"></div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
-                        <div className="bg-blue-400/20 rounded h-2 w-20"></div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-4 w-4 text-green-400" />
-                        <div className="bg-blue-400/20 rounded h-2 w-14"></div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <div className="h-4 w-4 border border-blue-400/50 rounded"></div>
-                        <div className="bg-blue-400/10 rounded h-2 w-18"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Center Silhouettes */}
-                  <div className="flex items-center space-x-6">
-                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
-                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
-                    </div>
-                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
-                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
-                    </div>
-                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
-                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
-                    </div>
-                  </div>
-
-                  {/* Right Dashboard */}
-                  <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-4 border border-blue-400/30 ml-4">
-                    <div className="space-y-3">
-                      <div className="flex items-center space-x-2">
-                        <Users className="h-4 w-4 text-blue-300" />
-                        <div className="bg-blue-400/20 rounded h-2 w-12"></div>
-                      </div>
-                      <div className="space-y-1">
-                        <BarChart3 className="h-6 w-6 text-blue-300" />
-                        <div className="flex space-x-1">
-                          <div className="bg-blue-400 rounded w-2 h-6"></div>
-                          <div className="bg-blue-500 rounded w-2 h-8"></div>
-                          <div className="bg-blue-400 rounded w-2 h-4"></div>
-                          <div className="bg-blue-600 rounded w-2 h-7"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* AI Badge */}
-                <div className="absolute top-4 right-4">
-                  <div className="bg-blue-500/30 backdrop-blur-sm rounded-full px-3 py-1 border border-blue-400/30">
-                    <div className="flex items-center space-x-2">
-                      <Brain className="h-4 w-4 text-blue-300" />
-                      <span className="text-xs text-blue-200 font-medium">AI</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -250,7 +257,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { icon: Users, title: "Standardized Coaching", desc: "Consistent training methodology" },
+              { icon: UserCheck, title: "Standardized Coaching", desc: "Consistent training methodology" },
               { icon: Eye, title: "Centralized Insights", desc: "Unified performance visibility" },
               { icon: GraduationCap, title: "Targeted Development", desc: "Personalized skill building" },
               { icon: Shield, title: "Enhanced Accountability", desc: "Performance responsibility" }
