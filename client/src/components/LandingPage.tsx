@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle, Eye, GraduationCap, Shield, UserCheck } from "lucide-react";
+import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle, Eye, GraduationCap, Shield, UserCheck, Settings, Zap, Trophy } from "lucide-react";
 import { Link } from "wouter";
 
 interface LandingPageProps {
@@ -9,6 +10,8 @@ interface LandingPageProps {
 }
 
 export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
+  const [activeTab, setActiveTab] = useState('Performance Analytics');
+  
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
     if (featuresSection) {
@@ -293,92 +296,357 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
               "Goal Tracking", 
               "AI Recommendations",
               "Team Management"
-            ].map((tab, index) => (
+            ].map((tab) => (
               <Button
-                key={index}
-                variant={index === 0 ? "default" : "outline"}
-                className={index === 0 
+                key={tab}
+                variant={activeTab === tab ? "default" : "outline"}
+                className={activeTab === tab 
                   ? "bg-gradient-to-r from-orange-500 to-red-500 text-white" 
                   : "border-slate-600 text-slate-300 hover:text-white hover:border-slate-400"
                 }
+                onClick={() => setActiveTab(tab)}
               >
                 {tab}
               </Button>
             ))}
           </div>
 
-          {/* Featured Content */}
+          {/* Tab Content */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content - Text Features */}
             <div className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Target className="h-4 w-4 text-white" />
+              {activeTab === 'Performance Analytics' && (
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Target className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Smart Performance Tracking</h3>
+                      <p className="text-slate-300">
+                        AI-powered KPI monitoring with real-time insights into sales calls, 
+                        appointments, and conversion rates for data-driven decisions.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Smart Performance Tracking</h3>
-                    <p className="text-slate-300">
-                      AI-powered KPI monitoring with real-time insights into sales calls, 
-                      appointments, and conversion rates for data-driven decisions.
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Brain className="h-4 w-4 text-white" />
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Brain className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Intelligent Coaching</h3>
+                      <p className="text-slate-300">
+                        Machine learning recommendations for optimal training, mentoring, 
+                        and development plans tailored to individual performance patterns.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Intelligent Coaching</h3>
-                    <p className="text-slate-300">
-                      Machine learning recommendations for optimal training, mentoring, 
-                      and development plans tailored to individual performance patterns.
-                    </p>
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <Award className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">Goal Achievement</h3>
-                    <p className="text-slate-300">
-                      Automated goal setting and progress tracking with priority-based 
-                      notifications and achievement recognition systems.
-                    </p>
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Award className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Goal Achievement</h3>
+                      <p className="text-slate-300">
+                        Automated goal setting and progress tracking with priority-based 
+                        notifications and achievement recognition systems.
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {activeTab === 'Goal Tracking' && (
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Trophy className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Automated Goal Setting</h3>
+                      <p className="text-slate-300">
+                        Intelligent goal creation based on historical performance data and 
+                        industry benchmarks for realistic yet challenging targets.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <TrendingUp className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Progress Monitoring</h3>
+                      <p className="text-slate-300">
+                        Real-time progress tracking with visual indicators and milestone 
+                        celebrations to maintain motivation and momentum.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Clock className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Priority-Based Notifications</h3>
+                      <p className="text-slate-300">
+                        Smart alert system that notifies managers of critical goal updates, 
+                        deadlines, and achievement milestones for timely intervention.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'AI Recommendations' && (
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Brain className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Machine Learning Insights</h3>
+                      <p className="text-slate-300">
+                        Advanced algorithms analyze performance patterns to identify 
+                        training opportunities and predict coaching outcomes.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Zap className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Personalized Development Plans</h3>
+                      <p className="text-slate-300">
+                        AI-generated training recommendations tailored to individual 
+                        strengths, weaknesses, and learning preferences for maximum impact.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Target className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Predictive Performance Analytics</h3>
+                      <p className="text-slate-300">
+                        Forecast future performance trends and identify potential 
+                        challenges before they impact results.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'Team Management' && (
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Users className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Centralized Team Dashboard</h3>
+                      <p className="text-slate-300">
+                        Unified view of all team members' performance, coaching status, 
+                        and development progress in one comprehensive interface.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <Settings className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Resource Allocation</h3>
+                      <p className="text-slate-300">
+                        Optimize coaching resources and training schedules based on 
+                        team priorities and individual development needs.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4">
+                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                      <BarChart3 className="h-4 w-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-2">Team Performance Analytics</h3>
+                      <p className="text-slate-300">
+                        Advanced reporting and analytics to track team-wide trends, 
+                        identify top performers, and benchmark against industry standards.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* Right Content - Visual Dashboard */}
             <div className="bg-slate-700/30 rounded-2xl p-8 border border-slate-600">
-              <div className="bg-slate-800 rounded-lg p-6 mb-6">
-                <div className="flex items-center justify-between mb-4">
-                  <h4 className="text-white font-semibold">Performance Dashboard</h4>
-                  <Badge variant="secondary" className="bg-green-500/20 text-green-400">Live</Badge>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-300">Sales Conversion</span>
-                    <span className="text-white font-semibold">87%</span>
+              {activeTab === 'Performance Analytics' && (
+                <>
+                  <div className="bg-slate-800 rounded-lg p-6 mb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-white font-semibold">Performance Dashboard</h4>
+                      <Badge variant="secondary" className="bg-green-500/20 text-green-400">Live</Badge>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-slate-300">Sales Conversion</span>
+                        <span className="text-white font-semibold">87%</span>
+                      </div>
+                      <div className="w-full bg-slate-600 rounded-full h-2">
+                        <div className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full w-[87%]"></div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-slate-600 rounded-full h-2">
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full w-[87%]"></div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-white">142</div>
+                      <div className="text-slate-400 text-sm">Active Reports</div>
+                    </div>
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-white">94%</div>
+                      <div className="text-slate-400 text-sm">Team Performance</div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-800 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white">142</div>
-                  <div className="text-slate-400 text-sm">Active Reports</div>
-                </div>
-                <div className="bg-slate-800 rounded-lg p-4 text-center">
-                  <div className="text-2xl font-bold text-white">94%</div>
-                  <div className="text-slate-400 text-sm">Team Performance</div>
-                </div>
-              </div>
+                </>
+              )}
+
+              {activeTab === 'Goal Tracking' && (
+                <>
+                  <div className="bg-slate-800 rounded-lg p-6 mb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-white font-semibold">Goal Progress</h4>
+                      <Badge variant="secondary" className="bg-blue-500/20 text-blue-400">Q4 2024</Badge>
+                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-slate-300">Sales Target</span>
+                          <span className="text-white font-semibold">85%</span>
+                        </div>
+                        <div className="w-full bg-slate-600 rounded-full h-2">
+                          <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full w-[85%]"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-slate-300">Training Hours</span>
+                          <span className="text-white font-semibold">92%</span>
+                        </div>
+                        <div className="w-full bg-slate-600 rounded-full h-2">
+                          <div className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full w-[92%]"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-green-400">23</div>
+                      <div className="text-slate-400 text-sm">Goals Achieved</div>
+                    </div>
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-orange-400">5</div>
+                      <div className="text-slate-400 text-sm">In Progress</div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeTab === 'AI Recommendations' && (
+                <>
+                  <div className="bg-slate-800 rounded-lg p-6 mb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-white font-semibold">AI Insights</h4>
+                      <Badge variant="secondary" className="bg-purple-500/20 text-purple-400">Smart</Badge>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
+                        <Brain className="h-4 w-4 text-purple-400" />
+                        <div className="flex-1">
+                          <div className="text-white text-sm font-medium">Coaching Opportunity</div>
+                          <div className="text-slate-400 text-xs">John needs call technique training</div>
+                        </div>
+                        <div className="text-purple-400 text-xs">High</div>
+                      </div>
+                      <div className="flex items-center space-x-3 p-3 bg-slate-700/50 rounded-lg">
+                        <Zap className="h-4 w-4 text-yellow-400" />
+                        <div className="flex-1">
+                          <div className="text-white text-sm font-medium">Performance Alert</div>
+                          <div className="text-slate-400 text-xs">Sarah excelling in conversions</div>
+                        </div>
+                        <div className="text-yellow-400 text-xs">Med</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-purple-400">12</div>
+                      <div className="text-slate-400 text-sm">Active Recommendations</div>
+                    </div>
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-green-400">89%</div>
+                      <div className="text-slate-400 text-sm">Accuracy Rate</div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {activeTab === 'Team Management' && (
+                <>
+                  <div className="bg-slate-800 rounded-lg p-6 mb-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-white font-semibold">Team Overview</h4>
+                      <Badge variant="secondary" className="bg-cyan-500/20 text-cyan-400">Active</Badge>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                          <span className="text-slate-300">High Performers</span>
+                        </div>
+                        <span className="text-white font-semibold">8</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                          <span className="text-slate-300">Need Coaching</span>
+                        </div>
+                        <span className="text-white font-semibold">3</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                          <span className="text-slate-300">At Risk</span>
+                        </div>
+                        <span className="text-white font-semibold">1</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-cyan-400">12</div>
+                      <div className="text-slate-400 text-sm">Team Members</div>
+                    </div>
+                    <div className="bg-slate-800 rounded-lg p-4 text-center">
+                      <div className="text-2xl font-bold text-green-400">67%</div>
+                      <div className="text-slate-400 text-sm">Avg Performance</div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
