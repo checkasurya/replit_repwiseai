@@ -21,7 +21,83 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0 overflow-hidden">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          {/* Animated geometric network */}
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style={{ stopColor: '#f97316', stopOpacity: 0.6 }} />
+              <stop offset="100%" style={{ stopColor: '#dc2626', stopOpacity: 0.3 }} />
+            </linearGradient>
+          </defs>
+          
+          {/* Geometric network lines */}
+          <g stroke="url(#lineGradient)" strokeWidth="1" fill="none" opacity="0.7">
+            <path d="M100,150 L300,80 L500,200 L700,120 L900,250">
+              <animate attributeName="d" 
+                values="M100,150 L300,80 L500,200 L700,120 L900,250;M120,180 L320,60 L480,220 L720,140 L880,270;M100,150 L300,80 L500,200 L700,120 L900,250" 
+                dur="8s" repeatCount="indefinite" />
+            </path>
+            <path d="M200,300 L400,250 L600,350 L800,280 L1000,400">
+              <animate attributeName="d" 
+                values="M200,300 L400,250 L600,350 L800,280 L1000,400;M180,320 L420,230 L580,370 L820,300 L980,420;M200,300 L400,250 L600,350 L800,280 L1000,400" 
+                dur="10s" repeatCount="indefinite" />
+            </path>
+            <path d="M50,450 L250,400 L450,500 L650,430 L850,550">
+              <animate attributeName="d" 
+                values="M50,450 L250,400 L450,500 L650,430 L850,550;M70,470 L270,380 L430,520 L670,450 L830,570;M50,450 L250,400 L450,500 L650,430 L850,550" 
+                dur="12s" repeatCount="indefinite" />
+            </path>
+          </g>
+          
+          {/* Floating geometric shapes */}
+          <g fill="url(#lineGradient)" opacity="0.4">
+            <circle cx="150" cy="100" r="3">
+              <animateTransform attributeName="transform" type="translate" 
+                values="0,0; 20,-10; 0,0" dur="6s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="350" cy="180" r="2">
+              <animateTransform attributeName="transform" type="translate" 
+                values="0,0; -15,25; 0,0" dur="8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="550" cy="120" r="2.5">
+              <animateTransform attributeName="transform" type="translate" 
+                values="0,0; 30,15; 0,0" dur="7s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="750" cy="300" r="3">
+              <animateTransform attributeName="transform" type="translate" 
+                values="0,0; -25,-20; 0,0" dur="9s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="950" cy="200" r="2">
+              <animateTransform attributeName="transform" type="translate" 
+                values="0,0; 15,30; 0,0" dur="10s" repeatCount="indefinite" />
+            </circle>
+          </g>
+          
+          {/* Connecting lines between nodes */}
+          <g stroke="url(#lineGradient)" strokeWidth="0.5" fill="none" opacity="0.3">
+            <line x1="150" y1="100" x2="350" y2="180">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="4s" repeatCount="indefinite" />
+            </line>
+            <line x1="350" y1="180" x2="550" y2="120">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="5s" repeatCount="indefinite" />
+            </line>
+            <line x1="550" y1="120" x2="750" y2="300">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="6s" repeatCount="indefinite" />
+            </line>
+            <line x1="750" y1="300" x2="950" y2="200">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="3s" repeatCount="indefinite" />
+            </line>
+          </g>
+        </svg>
+      </div>
       {/* Header */}
       <header className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-sm border-b border-slate-700 z-50">
         <div className="container mx-auto px-6 py-4">
@@ -58,7 +134,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-6">
+      <section className="relative pt-24 pb-12 px-6 z-10">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -93,13 +169,84 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
             </div>
 
             <div className="relative">
-              <div className="relative w-full h-96 bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-32 h-32 bg-gradient-to-r from-orange-500 to-red-500 rounded-full opacity-20 animate-pulse"></div>
+              {/* RepWise Dashboard Mockup */}
+              <div className="relative w-full h-96 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl overflow-hidden border border-slate-600 shadow-2xl">
+                {/* Header */}
+                <div className="bg-slate-900 p-4 border-b border-slate-600">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">R</span>
+                    </div>
+                    <span className="text-white font-semibold">RepWise(AI)</span>
+                  </div>
                 </div>
-                <div className="absolute bottom-4 right-4 text-slate-400 text-sm">
-                  AI-Powered Analytics
+
+                {/* Main Content */}
+                <div className="p-6">
+                  <div className="mb-4">
+                    <h3 className="text-white text-lg font-semibold mb-2">Enhancing Sales Force Effectiveness with AI-Based Coaching/Training</h3>
+                    <p className="text-cyan-400 text-sm">Improve your sales performance through AI-generated insights</p>
+                  </div>
+
+                  {/* Dashboard Cards */}
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    {/* AI Insights Card */}
+                    <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Brain className="h-4 w-4 text-cyan-400" />
+                        <span className="text-cyan-400 text-sm font-medium">AI-Generated Insights</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <BarChart3 className="h-8 w-8 text-cyan-400" />
+                        <div className="flex-1">
+                          <div className="w-full bg-slate-600 rounded-full h-2 mb-1">
+                            <div className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full w-3/4"></div>
+                          </div>
+                          <span className="text-white text-xs">Performance Trend: +12%</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* User Performance */}
+                    <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <Users className="h-4 w-4 text-orange-400" />
+                        <span className="text-orange-400 text-sm font-medium">Team Performance</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs">★</span>
+                        </div>
+                        <div>
+                          <div className="text-white font-semibold">4.2/5</div>
+                          <div className="text-slate-400 text-xs">Avg Rating</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* User Avatars */}
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
+                      <Users className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                      <Target className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                      <Award className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                      <Brain className="h-5 w-5 text-white" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* AI Powered Badge */}
+                <div className="absolute bottom-4 right-4">
+                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0">
+                    AI-Powered Analytics
+                  </Badge>
                 </div>
               </div>
             </div>
@@ -108,7 +255,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       </section>
 
       {/* Quick Features Preview */}
-      <section className="py-12 px-6">
+      <section className="relative py-12 px-6 z-10">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-6">
             {[
@@ -130,7 +277,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       </section>
 
       {/* Main Features Section */}
-      <section id="features" className="py-20 px-6 bg-slate-800/30">
+      <section id="features" className="relative py-20 px-6 bg-slate-800/30 z-10">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -245,7 +392,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-700 py-12 px-6">
+      <footer className="relative bg-slate-900 border-t border-slate-700 py-12 px-6 z-10">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
