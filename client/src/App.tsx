@@ -89,11 +89,8 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-          <p className="text-slate-300 text-sm">Loading RepWise...</p>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
       </div>
     );
   }
@@ -103,14 +100,12 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
-          <div className="transition-all duration-300 ease-in-out">
-            {currentView === 'landing' && (
-              <LandingPage onNavigateToLogin={handleNavigateToLogin} />
-            )}
-            {currentView === 'login' && (
-              <LoginPage onBack={handleNavigateToLanding} />
-            )}
-          </div>
+          {currentView === 'landing' && (
+            <LandingPage onNavigateToLogin={handleNavigateToLogin} />
+          )}
+          {currentView === 'login' && (
+            <LoginPage onBack={handleNavigateToLanding} />
+          )}
         </TooltipProvider>
       </QueryClientProvider>
     );
@@ -120,7 +115,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 transition-all duration-300">
+        <div className="min-h-screen bg-[var(--gp-surface-base)]">
           <Header currentView={currentView} onNavigate={handleNavigate} />
           <main>
             {currentView === 'dashboard' && (

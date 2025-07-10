@@ -13,7 +13,7 @@ interface LoginPageProps {
 }
 
 export default function LoginPage({ onBack }: LoginPageProps) {
-  const [email, setEmail] = useState('admin');
+  const [email, setEmail] = useState('admin@healthcorp.com');
   const [password, setPassword] = useState('admin123');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -161,21 +161,6 @@ export default function LoginPage({ onBack }: LoginPageProps) {
           </div>
         </CardContent>
       </Card>
-
-      {/* Footer */}
-      <footer className="fixed bottom-0 w-full bg-slate-900/90 backdrop-blur-sm border-t border-slate-700 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-            <div className="text-slate-400 text-sm mb-2 md:mb-0">
-              Copyright © RepWise 2025. All rights reserved.
-            </div>
-            <div className="flex space-x-6">
-              <div className="text-slate-400 text-sm hover:text-white cursor-pointer transition-colors">Privacy Policy</div>
-              <div className="text-slate-400 text-sm hover:text-white cursor-pointer transition-colors">Terms of Service</div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
