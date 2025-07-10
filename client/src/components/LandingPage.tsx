@@ -144,7 +144,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Effectiveness with </span>
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">AI-Based Coaching </span>
-                  <span className="text-white"> to advance your business</span>
+                  <span className="text-white"> and Actionable Insights</span>
                 </h1>
                 
                 <p className="text-xl text-slate-300 leading-relaxed">
