@@ -283,10 +283,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                 Our solutions.
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We help healthcare teams work smarter by empowering them with proven data, 
-              technology, and AI solutions across the entire performance lifecycle.
-            </p>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">Centralized, standardized feedback—unlocking data-driven growth and continuous sales improvement.</p>
           </div>
 
           {/* Feature Tabs */}
