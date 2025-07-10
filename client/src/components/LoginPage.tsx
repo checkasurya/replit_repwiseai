@@ -95,7 +95,7 @@ export default function LoginPage({ onBack }: LoginPageProps) {
           </div>
         </div>
       </header>
-      <Card className="w-full max-w-sm bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-8">
+      <Card className="w-full max-w-sm bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-[64px] mb-[64px]">
         <CardContent className="p-6">
           <div className="text-center mb-6">
             <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-12 h-12 flex items-center justify-center mx-auto mb-3">
