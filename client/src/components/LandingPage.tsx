@@ -141,9 +141,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                   <span className="text-white">Enhancing Salesforce</span>
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-                    performance
-                  </span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Effectiveness with </span>
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
                     management
