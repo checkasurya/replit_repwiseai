@@ -151,11 +151,8 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
                   <span className="text-white"> to advance your business</span>
                 </h1>
                 
-                <p className="text-xl text-slate-300 leading-relaxed">
-                  Run intelligent, data-driven campaigns with real-time 
-                  optimization. Smart automation meets powerful analytics for 
-                  marketing excellence.
-                </p>
+                <p className="text-xl text-slate-300 leading-relaxed">Deliver consistent, real-time feedback and actionable insights.
+                AI-driven coaching for sales force development and accountability.</p>
               </div>
 
               <Button 
