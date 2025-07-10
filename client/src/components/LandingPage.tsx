@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle } from "lucide-react";
+import { Target, TrendingUp, Users, BarChart3, Brain, Award, Clock, CheckCircle, Eye, GraduationCap, Shield } from "lucide-react";
 import { Link } from "wouter";
 
 interface LandingPageProps {
@@ -139,18 +139,22 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">Enhancing Salesforce</span>
+                  <span className="text-white">Advanced</span>
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Effectiveness with </span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+                    campaign
+                  </span>
                   <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">AI-Based Coaching </span>
-                  <span className="text-white"> and Actionable Insights</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
+                    technology
+                  </span>
+                  <span className="text-white"> to advance your business</span>
                 </h1>
                 
                 <p className="text-xl text-slate-300 leading-relaxed">
-                  Streamline healthcare representative performance with intelligent, 
-                  data-driven coaching. Smart automation meets powerful analytics for 
-                  management excellence.
+                  Run intelligent, data-driven campaigns with real-time 
+                  optimization. Smart automation meets powerful analytics for 
+                  marketing excellence.
                 </p>
               </div>
 
@@ -164,84 +168,80 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
             </div>
 
             <div className="relative">
-              {/* RepWise Dashboard Mockup */}
-              <div className="relative w-full h-96 bg-gradient-to-br from-slate-800 to-slate-700 rounded-2xl overflow-hidden border border-slate-600 shadow-2xl">
+              {/* Coaching Dashboard Mockup - Based on Image 2 */}
+              <div className="relative w-full h-96 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 rounded-2xl overflow-hidden shadow-2xl">
                 {/* Header */}
-                <div className="bg-slate-900 p-4 border-b border-slate-600">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-6 h-6 bg-gradient-to-r from-orange-500 to-red-500 rounded flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">R</span>
-                    </div>
-                    <span className="text-white font-semibold">RepWise(AI)</span>
-                  </div>
+                <div className="text-center pt-8 pb-4">
+                  <h2 className="text-2xl font-bold text-white mb-2">Repwise(AI)</h2>
+                  <h3 className="text-lg font-semibold text-blue-200 mb-2">Centralized Coaching & Feedback</h3>
+                  <p className="text-sm text-blue-300">Empowering Salesforce Development with Data-Driven Insights</p>
                 </div>
 
-                {/* Main Content */}
-                <div className="p-6">
-                  <div className="mb-4">
-                    <h3 className="text-white text-lg font-semibold mb-2">Enhancing Sales Force Effectiveness with AI-Based Coaching/Training</h3>
-                    <p className="text-cyan-400 text-sm">Improve your sales performance through AI-generated insights</p>
-                  </div>
-
-                  {/* Dashboard Cards */}
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    {/* AI Insights Card */}
-                    <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Brain className="h-4 w-4 text-cyan-400" />
-                        <span className="text-cyan-400 text-sm font-medium">AI-Generated Insights</span>
+                {/* Main Coaching Scene */}
+                <div className="flex items-center justify-center px-8 pt-4">
+                  {/* Left Dashboard */}
+                  <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-4 border border-blue-400/30 mr-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                        <div className="bg-blue-400/20 rounded h-2 w-16"></div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <BarChart3 className="h-8 w-8 text-cyan-400" />
-                        <div className="flex-1">
-                          <div className="w-full bg-slate-600 rounded-full h-2 mb-1">
-                            <div className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full w-3/4"></div>
-                          </div>
-                          <span className="text-white text-xs">Performance Trend: +12%</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* User Performance */}
-                    <div className="bg-slate-700/50 rounded-lg p-4 border border-slate-600">
-                      <div className="flex items-center space-x-2 mb-2">
-                        <Users className="h-4 w-4 text-orange-400" />
-                        <span className="text-orange-400 text-sm font-medium">Team Performance</span>
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                        <div className="bg-blue-400/20 rounded h-2 w-20"></div>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
-                          <span className="text-white text-xs">★</span>
-                        </div>
-                        <div>
-                          <div className="text-white font-semibold">4.2/5</div>
-                          <div className="text-slate-400 text-xs">Avg Rating</div>
-                        </div>
+                        <CheckCircle className="h-4 w-4 text-green-400" />
+                        <div className="bg-blue-400/20 rounded h-2 w-14"></div>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <div className="h-4 w-4 border border-blue-400/50 rounded"></div>
+                        <div className="bg-blue-400/10 rounded h-2 w-18"></div>
                       </div>
                     </div>
                   </div>
 
-                  {/* User Avatars */}
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                      <Users className="h-5 w-5 text-white" />
+                  {/* Center Silhouettes */}
+                  <div className="flex items-center space-x-6">
+                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
                     </div>
-                    <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                      <Target className="h-5 w-5 text-white" />
+                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
                     </div>
-                    <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                      <Award className="h-5 w-5 text-white" />
+                    <div className="w-12 h-20 bg-slate-700/80 rounded-full relative">
+                      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-600 rounded-full"></div>
                     </div>
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                      <Brain className="h-5 w-5 text-white" />
+                  </div>
+
+                  {/* Right Dashboard */}
+                  <div className="bg-blue-600/30 backdrop-blur-sm rounded-lg p-4 border border-blue-400/30 ml-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Users className="h-4 w-4 text-blue-300" />
+                        <div className="bg-blue-400/20 rounded h-2 w-12"></div>
+                      </div>
+                      <div className="space-y-1">
+                        <BarChart3 className="h-6 w-6 text-blue-300" />
+                        <div className="flex space-x-1">
+                          <div className="bg-blue-400 rounded w-2 h-6"></div>
+                          <div className="bg-blue-500 rounded w-2 h-8"></div>
+                          <div className="bg-blue-400 rounded w-2 h-4"></div>
+                          <div className="bg-blue-600 rounded w-2 h-7"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* AI Powered Badge */}
-                <div className="absolute bottom-4 right-4">
-                  <Badge className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white border-0">
-                    AI-Powered Analytics
-                  </Badge>
+                {/* AI Badge */}
+                <div className="absolute top-4 right-4">
+                  <div className="bg-blue-500/30 backdrop-blur-sm rounded-full px-3 py-1 border border-blue-400/30">
+                    <div className="flex items-center space-x-2">
+                      <Brain className="h-4 w-4 text-blue-300" />
+                      <span className="text-xs text-blue-200 font-medium">AI</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -253,10 +253,10 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { icon: Brain, title: "Smart Automation", desc: "AI-driven recommendations" },
-              { icon: Target, title: "Precision Targeting", desc: "Focused coaching plans" },
-              { icon: BarChart3, title: "Real-time Analytics", desc: "Live performance data" },
-              { icon: TrendingUp, title: "ROI Optimization", desc: "Maximize team results" }
+              { icon: Users, title: "Standardized Coaching", desc: "Consistent training methodology" },
+              { icon: Eye, title: "Centralized Insights", desc: "Unified performance visibility" },
+              { icon: GraduationCap, title: "Targeted Development", desc: "Personalized skill building" },
+              { icon: Shield, title: "Enhanced Accountability", desc: "Performance responsibility" }
             ].map((feature, index) => (
               <Card key={index} className="bg-slate-800/50 border-slate-700 hover:bg-slate-700/50 transition-colors">
                 <CardContent className="p-6 text-center">
