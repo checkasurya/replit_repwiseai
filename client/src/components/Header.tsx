@@ -35,9 +35,9 @@ export default function Header({ currentView, onNavigate }: HeaderProps) {
               Dashboard
             </button>
             <button
-              onClick={() => onNavigate('reports')}
+              onClick={() => onNavigate('reporting')}
               className={`pb-4 text-body-s font-medium border-b-3 gp-motion-fast gp-focus-ring ${
-                currentView === 'reports'
+                currentView === 'reporting'
                   ? 'text-[var(--gp-brand-accent)] border-[var(--gp-brand-accent)]'
                   : 'text-[var(--gp-content-secondary)] hover:text-[var(--gp-content-primary)] border-transparent'
               }`}
@@ -45,14 +45,25 @@ export default function Header({ currentView, onNavigate }: HeaderProps) {
               Reports
             </button>
             <button
-              className="text-[var(--gp-content-secondary)] hover:text-[var(--gp-content-primary)] pb-4 text-body-s font-medium border-b-3 border-transparent gp-motion-fast gp-focus-ring"
+              onClick={() => onNavigate('advanced-analytics')}
+              className={`pb-4 text-body-s font-medium border-b-3 gp-motion-fast gp-focus-ring ${
+                currentView === 'advanced-analytics'
+                  ? 'text-[var(--gp-brand-accent)] border-[var(--gp-brand-accent)]'
+                  : 'text-[var(--gp-content-secondary)] hover:text-[var(--gp-content-primary)] border-transparent'
+              }`}
             >
               Analytics
             </button>
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" aria-label="Notifications" className="gp-btn-ghost p-2">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => onNavigate('notifications')}
+              aria-label="Notifications" 
+              className="gp-btn-ghost p-2"
+            >
               <Bell className="w-5 h-5 text-[var(--gp-content-secondary)]" />
               <span className="sr-only">View notifications</span>
             </Button>
