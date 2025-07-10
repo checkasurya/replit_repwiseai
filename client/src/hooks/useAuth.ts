@@ -22,8 +22,6 @@ export const useAuth = () => {
     try {
       const response = await authService.login(email, password);
       setUser(response.user);
-      // Force a page reload to ensure clean state after login
-      window.location.reload();
       return response;
     } catch (error) {
       throw error;
@@ -33,8 +31,6 @@ export const useAuth = () => {
   const logout = () => {
     authService.logout();
     setUser(null);
-    // Force a page reload to ensure clean state after logout
-    window.location.reload();
   };
 
   return {
