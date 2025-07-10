@@ -140,7 +140,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
             <div className="w-1/2 space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">Advanced</span>
+                  <span className="text-white">Enhancing Salesforce</span>
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
                     campaign
