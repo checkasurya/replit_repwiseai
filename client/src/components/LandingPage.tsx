@@ -132,7 +132,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
           </div>
         </div>
       </header>
-
       {/* Hero Section */}
       <section className="relative pt-24 pb-12 px-6 z-10">
         <div className="container mx-auto">
@@ -140,7 +139,7 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="text-white">Advanced</span>
+                  <span className="text-white">Enhancing Salesforce</span>
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
                     performance
@@ -253,7 +252,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
           </div>
         </div>
       </section>
-
       {/* Quick Features Preview */}
       <section className="relative py-12 px-6 z-10">
         <div className="container mx-auto">
@@ -275,7 +273,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
           </div>
         </div>
       </section>
-
       {/* Main Features Section */}
       <section id="features" className="relative py-20 px-6 bg-slate-800/30 z-10">
         <div className="container mx-auto">
@@ -390,7 +387,6 @@ export default function LandingPage({ onNavigateToLogin }: LandingPageProps) {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="relative bg-slate-900 border-t border-slate-700 py-12 px-6 z-10">
         <div className="container mx-auto">
