@@ -6,9 +6,13 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
-import { UserRound } from 'lucide-react';
+import { UserRound, ArrowLeft, Target, Lock } from 'lucide-react';
 
-export default function LoginPage() {
+interface LoginPageProps {
+  onBack?: () => void;
+}
+
+export default function LoginPage({ onBack }: LoginPageProps) {
   const [email, setEmail] = useState('manager@healthcorp.com');
   const [password, setPassword] = useState('password123');
   const [isLoading, setIsLoading] = useState(false);
@@ -59,88 +63,102 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[var(--gp-surface-base)] to-[var(--gp-surface-sunken)] flex items-center justify-center p-4">
-      <Card className="w-full max-w-md gp-elevation-2 gp-modal">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-sm border-b border-slate-700 z-50">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                <Target className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-xl font-bold text-white">RepWise</span>
+            </div>
+            
+            <nav className="flex items-center space-x-4">
+              {onBack && (
+                <Button 
+                  variant="ghost" 
+                  onClick={onBack}
+                  className="text-slate-300 hover:text-white"
+                >
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Back to Home
+                </Button>
+              )}
+              <Button 
+                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+              >
+                Login
+              </Button>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <Card className="w-full max-w-md bg-slate-800/50 border-slate-700 backdrop-blur-sm mt-16">
         <CardContent className="p-8">
           <div className="text-center mb-8">
-            <div className="bg-[var(--gp-brand-accent)] text-[var(--gp-surface-base)] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-              <UserRound className="w-8 h-8" />
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <Lock className="w-8 h-8" />
             </div>
-            <h1 className="text-h1 text-[var(--gp-content-primary)]">RepWise(AI)</h1>
-            <p className="text-body-l text-[var(--gp-content-secondary)] mt-2">Healthcare Performance Management</p>
+            <h1 className="text-2xl font-bold text-white mb-2">Welcome Back</h1>
+            <p className="text-slate-300">Sign in to access your RepWise dashboard</p>
           </div>
 
           <form onSubmit={handleFormSubmit} className="space-y-6">
             <div>
-              <Label htmlFor="email" className="block text-body-s font-medium text-[var(--gp-content-secondary)] mb-2">
-                Email Address
+              <Label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                Username
               </Label>
-              <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@company.com"
-                className="w-full gp-focus-ring bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] text-[var(--gp-content-primary)]"
-                required
-                aria-describedby="email-help"
-              />
-              <p id="email-help" className="sr-only">Enter your work email address</p>
+              <div className="relative">
+                <UserRound className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Input
+                  id="email"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your username"
+                  className="w-full pl-10 bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 focus:border-orange-500"
+                  required
+                />
+              </div>
             </div>
 
             <div>
-              <Label htmlFor="password" className="block text-body-s font-medium text-[var(--gp-content-secondary)] mb-2">
+              <Label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
                 Password
               </Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full gp-focus-ring bg-[var(--gp-surface-raised)] border-[var(--gp-border-subtle)] text-[var(--gp-content-primary)]"
-                required
-              />
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Checkbox id="remember-me" className="border-[var(--gp-border-subtle)] data-[state=checked]:bg-[var(--gp-brand-accent)]" />
-                <Label htmlFor="remember-me" className="text-body-s text-[var(--gp-content-secondary)]">
-                  Remember me
-                </Label>
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  className="w-full pl-10 bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 focus:border-orange-500"
+                  required
+                />
               </div>
-              <a href="#" className="text-body-s text-[var(--gp-brand-accent)] hover:text-[var(--gp-brand-accent)] gp-motion-fast">
-                Forgot password?
-              </a>
             </div>
 
-            <div className="space-y-3">
-              <Button
-                type="button"
-                onClick={() => handleLogin('manager')}
-                disabled={isLoading}
-                className="w-full gp-btn-primary gp-focus-ring"
-                aria-label="Login as Manager"
-              >
-                {isLoading ? 'Logging in...' : 'Login as Manager'}
-              </Button>
-              <Button
-                type="button"
-                onClick={() => handleLogin('rep')}
-                disabled={isLoading}
-                className="w-full gp-btn-secondary gp-focus-ring"
-                aria-label="Login as Healthcare Representative"
-              >
-                {isLoading ? 'Logging in...' : 'Login as Healthcare Rep'}
-              </Button>
-            </div>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3"
+            >
+              {isLoading ? 'Signing In...' : 'Sign In'}
+            </Button>
           </form>
 
-          <div className="mt-6 text-center">
-            <p className="text-body-s text-[var(--gp-content-tertiary)]">
-              Demo Credentials: manager@healthcorp.com / password123
-            </p>
+          <div className="mt-6 p-4 bg-slate-700/30 rounded-lg border border-slate-600">
+            <div className="text-center">
+              <p className="text-sm text-slate-300 mb-2 font-medium">Demo credentials:</p>
+              <div className="text-xs text-slate-400 space-y-1">
+                <div className="font-mono">root / tiger</div>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>

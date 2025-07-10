@@ -4,6 +4,7 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
+import LandingPage from "@/components/LandingPage";
 import LoginPage from "@/components/LoginPage";
 import Header from "@/components/Header";
 import DashboardPage from "@/pages/dashboard";
@@ -16,14 +17,14 @@ import ReportingDashboard from "@/components/ReportingDashboard";
 
 function App() {
   const { user, isLoading, isAuthenticated } = useAuth();
-  const [currentView, setCurrentView] = useState<'dashboard' | 'report' | 'analytics' | 'goals' | 'notifications' | 'advanced-analytics' | 'reporting'>('dashboard');
+  const [currentView, setCurrentView] = useState<'landing' | 'login' | 'dashboard' | 'report' | 'analytics' | 'goals' | 'notifications' | 'advanced-analytics' | 'reporting'>('landing');
   const [currentReportId, setCurrentReportId] = useState<string | null>(null);
 
   // Reset view state when user authentication status changes
   useEffect(() => {
     if (!isAuthenticated) {
-      // User logged out - reset to login page state
-      setCurrentView('dashboard');
+      // User logged out - reset to landing page
+      setCurrentView('landing');
       setCurrentReportId(null);
     } else if (isAuthenticated && user) {
       // User logged in - ensure they land on dashboard
@@ -62,6 +63,14 @@ function App() {
     setCurrentView('reporting');
   };
 
+  const handleNavigateToLogin = () => {
+    setCurrentView('login');
+  };
+
+  const handleNavigateToLanding = () => {
+    setCurrentView('landing');
+  };
+
   const handleNavigate = (view: string) => {
     if (view === 'dashboard') {
       handleBackToDashboard();
@@ -91,7 +100,12 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
-          <LoginPage />
+          {currentView === 'landing' && (
+            <LandingPage onNavigateToLogin={handleNavigateToLogin} />
+          )}
+          {currentView === 'login' && (
+            <LoginPage onBack={handleNavigateToLanding} />
+          )}
         </TooltipProvider>
       </QueryClientProvider>
     );
